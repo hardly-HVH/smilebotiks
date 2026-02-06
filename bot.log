@@ -1,0 +1,673 @@
+2026-02-07 01:29:07 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:29:07 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:29:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 01:29:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 01:29:07 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 01:29:07 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 01:29:07 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 01:29:07 - telegram.ext.Application - INFO - Application started
+2026-02-07 01:29:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:13 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:13 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:13 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:29:17 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:29:47 UTC)" (scheduled at 2026-02-06 22:29:17.054209+00:00)
+2026-02-07 01:29:17 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:29:47 UTC)" executed successfully
+2026-02-07 01:29:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:29:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:10 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:31:10 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:31:10 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 01:31:11 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 01:31:11 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 01:31:11 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 01:31:11 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 01:31:11 - telegram.ext.Application - INFO - Application started
+2026-02-07 01:31:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:19 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:19 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 01:31:19 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:31:20 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:31:50 UTC)" (scheduled at 2026-02-06 22:31:20.763543+00:00)
+2026-02-07 01:31:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:31:50 UTC)" executed successfully
+2026-02-07 01:31:20 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:31:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:31:23 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:31:24 - root - ERROR - ������ ��� �������� ������ ����������: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:31:24 - root - ERROR - ������ � ����������� ������: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:31:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:31:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:44 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:31:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:32:20 UTC)" (scheduled at 2026-02-06 22:31:50.763543+00:00)
+2026-02-07 01:31:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:32:20 UTC)" executed successfully
+2026-02-07 01:31:53 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:03 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:13 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:32:50 UTC)" (scheduled at 2026-02-06 22:32:20.763543+00:00)
+2026-02-07 01:32:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:32:50 UTC)" executed successfully
+2026-02-07 01:32:23 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:44 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:32:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:33:20 UTC)" (scheduled at 2026-02-06 22:32:50.763543+00:00)
+2026-02-07 01:32:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:33:20 UTC)" executed successfully
+2026-02-07 01:32:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:04 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:33:50 UTC)" (scheduled at 2026-02-06 22:33:20.763543+00:00)
+2026-02-07 01:33:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:33:50 UTC)" executed successfully
+2026-02-07 01:33:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:34 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:44 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:33:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:34:20 UTC)" (scheduled at 2026-02-06 22:33:50.763543+00:00)
+2026-02-07 01:33:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:34:20 UTC)" executed successfully
+2026-02-07 01:33:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:04 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:34:50 UTC)" (scheduled at 2026-02-06 22:34:20.763543+00:00)
+2026-02-07 01:34:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:34:50 UTC)" executed successfully
+2026-02-07 01:34:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:34:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:35:20 UTC)" (scheduled at 2026-02-06 22:34:50.763543+00:00)
+2026-02-07 01:34:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:35:20 UTC)" executed successfully
+2026-02-07 01:34:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:35:50 UTC)" (scheduled at 2026-02-06 22:35:20.763543+00:00)
+2026-02-07 01:35:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:35:50 UTC)" executed successfully
+2026-02-07 01:35:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:35:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:36:20 UTC)" (scheduled at 2026-02-06 22:35:50.763543+00:00)
+2026-02-07 01:35:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:36:20 UTC)" executed successfully
+2026-02-07 01:35:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:10 - apscheduler.executors.default - INFO - Running job "send_reminders (trigger: interval[0:30:00], next run at: 2026-02-06 23:06:10 UTC)" (scheduled at 2026-02-06 22:36:10.764543+00:00)
+2026-02-07 01:36:10 - apscheduler.executors.default - INFO - Job "send_reminders (trigger: interval[0:30:00], next run at: 2026-02-06 23:06:10 UTC)" executed successfully
+2026-02-07 01:36:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:36:50 UTC)" (scheduled at 2026-02-06 22:36:20.763543+00:00)
+2026-02-07 01:36:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:36:50 UTC)" executed successfully
+2026-02-07 01:36:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:36:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:37:20 UTC)" (scheduled at 2026-02-06 22:36:50.763543+00:00)
+2026-02-07 01:36:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:37:20 UTC)" executed successfully
+2026-02-07 01:36:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:37:50 UTC)" (scheduled at 2026-02-06 22:37:20.763543+00:00)
+2026-02-07 01:37:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:37:50 UTC)" executed successfully
+2026-02-07 01:37:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:37:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:38:20 UTC)" (scheduled at 2026-02-06 22:37:50.763543+00:00)
+2026-02-07 01:37:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:38:20 UTC)" executed successfully
+2026-02-07 01:37:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:38:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:38:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:39:49 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 01:39:49 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 01:39:49 - root - ERROR - ❌ Ошибка добавления колонки last_request: Cannot add a column with non-constant default
+2026-02-07 01:39:49 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 01:39:49 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 01:39:49 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 01:39:49 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:39:49 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:39:49 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 01:39:49 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 01:39:49 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 01:39:49 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 01:39:49 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 01:39:49 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 01:39:49 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 01:39:49 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 01:39:49 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 01:39:49 - telegram.ext.Application - INFO - Application started
+2026-02-07 01:39:54 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 01:39:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:39:57 - root - INFO - ✅ Отправлено 6 уведомлений при перезапуске бота
+2026-02-07 01:39:59 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:40:29 UTC)" (scheduled at 2026-02-06 22:39:59.409375+00:00)
+2026-02-07 01:39:59 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:40:29 UTC)" executed successfully
+2026-02-07 01:40:00 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:40:04 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:40:04 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 01:40:04 - root - ERROR - ❌ Ошибка обновления запросов пользователя 7978634199: no such column: last_request
+2026-02-07 01:40:04 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 01:40:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:40:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:40:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:40:06 - root - ERROR - ❌ Ошибка обновления запросов пользователя 7978634199: no such column: last_request
+2026-02-07 01:40:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:40:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:40:20 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:40:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:40:21 - root - ERROR - ❌ Ошибка обновления запросов пользователя 7978634199: no such column: last_request
+2026-02-07 01:40:21 - root - ERROR - Ошибка при загрузке панели управления: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:40:21 - root - ERROR - Ошибка в обработчике кнопок: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:40:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:40:29 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:40:59 UTC)" (scheduled at 2026-02-06 22:40:29.409375+00:00)
+2026-02-07 01:40:29 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:40:59 UTC)" executed successfully
+2026-02-07 01:40:30 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:42:57 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 01:44:18 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 01:47:40 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 01:47:40 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 01:47:40 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 01:47:40 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 01:47:40 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 01:47:40 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 01:47:40 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 01:47:40 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:47:40 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 01:47:40 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 01:47:40 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 01:47:40 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 01:47:40 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 01:47:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 01:47:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 01:47:40 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 01:47:40 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 01:47:40 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 01:47:40 - telegram.ext.Application - INFO - Application started
+2026-02-07 01:47:45 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 01:47:45 - root - INFO - ✅ Отправлено 0 уведомлений при перезапуске бота
+2026-02-07 01:47:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:48:20 UTC)" (scheduled at 2026-02-06 22:47:50.478493+00:00)
+2026-02-07 01:47:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:48:20 UTC)" executed successfully
+2026-02-07 01:47:50 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:47:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:47:51 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 01:47:51 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 01:47:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 01:47:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:47:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:47:53 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:47:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:47:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 01:47:56 - root - ERROR - Ошибка при загрузке панели управления: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:47:56 - root - ERROR - Ошибка в обработчике кнопок: 'NoneType' object has no attribute 'reply_text'
+2026-02-07 01:47:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 01:48:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:48:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:48:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:48:50 UTC)" (scheduled at 2026-02-06 22:48:20.478493+00:00)
+2026-02-07 01:48:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:48:50 UTC)" executed successfully
+2026-02-07 01:48:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:48:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:48:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:48:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:49:20 UTC)" (scheduled at 2026-02-06 22:48:50.478493+00:00)
+2026-02-07 01:48:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:49:20 UTC)" executed successfully
+2026-02-07 01:48:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:49:50 UTC)" (scheduled at 2026-02-06 22:49:20.478493+00:00)
+2026-02-07 01:49:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:49:50 UTC)" executed successfully
+2026-02-07 01:49:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:49:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:50:20 UTC)" (scheduled at 2026-02-06 22:49:50.478493+00:00)
+2026-02-07 01:49:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:50:20 UTC)" executed successfully
+2026-02-07 01:49:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:20 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:50:50 UTC)" (scheduled at 2026-02-06 22:50:20.478493+00:00)
+2026-02-07 01:50:20 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:50:50 UTC)" executed successfully
+2026-02-07 01:50:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 01:50:50 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:51:20 UTC)" (scheduled at 2026-02-06 22:50:50.478493+00:00)
+2026-02-07 01:50:50 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 22:51:20 UTC)" executed successfully
+2026-02-07 02:00:34 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 02:00:34 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:00:34 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:00:34 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:00:34 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:00:34 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 02:00:34 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 02:00:35 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:00:35 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:00:35 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 02:00:35 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 02:00:35 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 02:00:35 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 02:00:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 02:00:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 02:00:35 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 02:00:35 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 02:00:35 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 02:00:35 - telegram.ext.Application - INFO - Application started
+2026-02-07 02:00:40 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 02:00:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:00:40 - root - INFO - ✅ Отправлено 1 уведомлений при перезапуске бота
+2026-02-07 02:00:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:01:15 UTC)" (scheduled at 2026-02-06 23:00:45.239478+00:00)
+2026-02-07 02:00:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:01:15 UTC)" executed successfully
+2026-02-07 02:00:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:00:49 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:00:49 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:00:49 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:00:49 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:00:50 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:00:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:00:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:00:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:00:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:00:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:00:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:00:53 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:02 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:01:45 UTC)" (scheduled at 2026-02-06 23:01:15.239478+00:00)
+2026-02-07 02:01:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:01:45 UTC)" executed successfully
+2026-02-07 02:01:22 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:32 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:34 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:34 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:01:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:01:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:43 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:44 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:02:15 UTC)" (scheduled at 2026-02-06 23:01:45.239478+00:00)
+2026-02-07 02:01:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:02:15 UTC)" executed successfully
+2026-02-07 02:01:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:01:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:01:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:01:58 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:01:58 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:01:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:00 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:00 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:00 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:10 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:12 - root - INFO - ✅ Пользователь 8475497732 добавлен/обновен
+2026-02-07 02:02:12 - user_actions - INFO - User 8475497732 - start_command - 
+2026-02-07 02:02:12 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:13 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:02:45 UTC)" (scheduled at 2026-02-06 23:02:15.239478+00:00)
+2026-02-07 02:02:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:02:45 UTC)" executed successfully
+2026-02-07 02:02:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:18 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:19 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:20 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:20 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:23 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:23 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:23 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:02:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:35 - root - INFO - ✅ Заказ SP1000 создан, код: #KA382226, тип: standard
+2026-02-07 02:02:35 - user_actions - INFO - User 8475497732 - create_order - order_id=SP1000
+2026-02-07 02:02:35 - root - INFO - ✅ Добавлено 1 гостей к заказу SP1000
+2026-02-07 02:02:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:35 - root - INFO - Уведомление о новом заказе SP1000 отправлено в чат промоутеров
+2026-02-07 02:02:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:03:15 UTC)" (scheduled at 2026-02-06 23:02:45.239478+00:00)
+2026-02-07 02:02:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:03:15 UTC)" executed successfully
+2026-02-07 02:02:49 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:49 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:02:49 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:02:50 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:02:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:02:54 - root - INFO - ✅ Статус заказа SP1000 изменен на closed
+2026-02-07 02:02:54 - user_actions - INFO - User kanagakrest - update_order_status - order_id=SP1000, status=closed
+2026-02-07 02:02:54 - root - INFO - ✅ Создан билет TKT146590 для гостя Ебло утиное
+2026-02-07 02:02:54 - user_actions - INFO - User SP1000 - create_ticket - ticket_id=TKT146590
+2026-02-07 02:02:54 - root - INFO - ✅ Создано 1 билетов для заказа SP1000
+2026-02-07 02:02:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendPhoto "HTTP/1.1 200 OK"
+2026-02-07 02:02:56 - root - INFO - ✅ Билеты отправлены пользователю 8475497732
+2026-02-07 02:02:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:56 - root - INFO - Уведомление отправлено в канал для заказа #SP1000
+2026-02-07 02:02:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:56 - root - INFO - Информация о 1 гостях отправлена в канал списков для заказа #SP1000
+2026-02-07 02:02:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:02:57 - root - INFO - Уведомление отправлено пользователю 8475497732
+2026-02-07 02:02:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:04 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:03:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:03:45 UTC)" (scheduled at 2026-02-06 23:03:15.239478+00:00)
+2026-02-07 02:03:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:03:45 UTC)" executed successfully
+2026-02-07 02:03:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:03:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:03:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:28 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getFile "HTTP/1.1 200 OK"
+2026-02-07 02:03:28 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:28 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8433063885%3AAAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/photos/file_5.jpg "HTTP/1.1 200 OK"
+2026-02-07 02:03:28 - root - INFO - QR-код распознан с помощью pyzbar: {"event": "SMILE PARTY", "ticket_id": "TKT146590",...
+2026-02-07 02:03:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 400 Bad Request"
+2026-02-07 02:03:29 - root - ERROR - Ошибка обработки фото QR-кода: Can't parse entities: can't find end of the entity starting at byte offset 192
+2026-02-07 02:03:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getFile "HTTP/1.1 200 OK"
+2026-02-07 02:03:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:38 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8433063885%3AAAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/photos/file_5.jpg "HTTP/1.1 200 OK"
+2026-02-07 02:03:38 - root - INFO - QR-код распознан с помощью pyzbar: {"event": "SMILE PARTY", "ticket_id": "TKT146590",...
+2026-02-07 02:03:38 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:38 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 400 Bad Request"
+2026-02-07 02:03:38 - root - ERROR - Ошибка обработки фото QR-кода: Can't parse entities: can't find end of the entity starting at byte offset 192
+2026-02-07 02:03:38 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:44 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:03:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:45 - root - WARNING - QR-данные не в JSON формате: TKT146590
+2026-02-07 02:03:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:04:15 UTC)" (scheduled at 2026-02-06 23:03:45.239478+00:00)
+2026-02-07 02:03:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:04:15 UTC)" executed successfully
+2026-02-07 02:03:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:03:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:03:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:04:45 UTC)" (scheduled at 2026-02-06 23:04:15.239478+00:00)
+2026-02-07 02:04:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:04:45 UTC)" executed successfully
+2026-02-07 02:04:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:05:15 UTC)" (scheduled at 2026-02-06 23:04:45.239478+00:00)
+2026-02-07 02:04:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:05:15 UTC)" executed successfully
+2026-02-07 02:04:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:04:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:05:45 UTC)" (scheduled at 2026-02-06 23:05:15.239478+00:00)
+2026-02-07 02:05:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:05:45 UTC)" executed successfully
+2026-02-07 02:05:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:35 - apscheduler.executors.default - INFO - Running job "send_reminders (trigger: interval[0:30:00], next run at: 2026-02-06 23:35:35 UTC)" (scheduled at 2026-02-06 23:05:35.240472+00:00)
+2026-02-07 02:05:35 - apscheduler.executors.default - INFO - Job "send_reminders (trigger: interval[0:30:00], next run at: 2026-02-06 23:35:35 UTC)" executed successfully
+2026-02-07 02:05:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:06:15 UTC)" (scheduled at 2026-02-06 23:05:45.239478+00:00)
+2026-02-07 02:05:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:06:15 UTC)" executed successfully
+2026-02-07 02:05:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:05:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:06:45 UTC)" (scheduled at 2026-02-06 23:06:15.239478+00:00)
+2026-02-07 02:06:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:06:45 UTC)" executed successfully
+2026-02-07 02:06:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:07:15 UTC)" (scheduled at 2026-02-06 23:06:45.239478+00:00)
+2026-02-07 02:06:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:07:15 UTC)" executed successfully
+2026-02-07 02:06:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:06:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:07:45 UTC)" (scheduled at 2026-02-06 23:07:15.239478+00:00)
+2026-02-07 02:07:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:07:45 UTC)" executed successfully
+2026-02-07 02:07:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:45 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:08:15 UTC)" (scheduled at 2026-02-06 23:07:45.239478+00:00)
+2026-02-07 02:07:45 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:08:15 UTC)" executed successfully
+2026-02-07 02:07:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:07:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:15 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:08:45 UTC)" (scheduled at 2026-02-06 23:08:15.239478+00:00)
+2026-02-07 02:08:15 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:08:45 UTC)" executed successfully
+2026-02-07 02:08:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:36 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 02:08:36 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:08:36 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:08:36 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:08:36 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:08:36 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 02:08:36 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 02:08:36 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:08:36 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:08:36 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 02:08:36 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 02:08:36 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 02:08:36 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 02:08:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 02:08:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 02:08:37 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 02:08:37 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 02:08:37 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 02:08:37 - telegram.ext.Application - INFO - Application started
+2026-02-07 02:08:41 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 02:08:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:08:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:08:42 - root - INFO - ✅ Отправлено 2 уведомлений при перезапуске бота
+2026-02-07 02:08:46 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:09:16 UTC)" (scheduled at 2026-02-06 23:08:46.923006+00:00)
+2026-02-07 02:08:46 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:09:16 UTC)" executed successfully
+2026-02-07 02:08:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:47 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:08:47 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:08:47 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:08:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:08:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:08:50 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:08:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:08:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:08:54 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getFile "HTTP/1.1 200 OK"
+2026-02-07 02:08:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:08:55 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8433063885%3AAAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/photos/file_5.jpg "HTTP/1.1 200 OK"
+2026-02-07 02:08:55 - root - INFO - QR-код распознан с помощью pyzbar: {"event": "SMILE PARTY", "ticket_id": "TKT146590",...
+2026-02-07 02:08:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:08:55 - root - ERROR - Ошибка обработки фото QR-кода: name 'safe_markdown_text' is not defined
+2026-02-07 02:08:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:09:04 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:09:14 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:09:16 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:09:46 UTC)" (scheduled at 2026-02-06 23:09:16.923006+00:00)
+2026-02-07 02:09:16 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:09:46 UTC)" executed successfully
+2026-02-07 02:09:25 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:09:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:09:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:09:46 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:10:16 UTC)" (scheduled at 2026-02-06 23:09:46.923006+00:00)
+2026-02-07 02:09:46 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:10:16 UTC)" executed successfully
+2026-02-07 02:09:55 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:10:05 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:10:15 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:10:16 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:10:46 UTC)" (scheduled at 2026-02-06 23:10:16.923006+00:00)
+2026-02-07 02:10:16 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:10:46 UTC)" executed successfully
+2026-02-07 02:12:20 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 02:12:20 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:12:20 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:12:20 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:12:20 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:12:20 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 02:12:20 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 02:12:21 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:12:21 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:12:21 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 02:12:21 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 02:12:21 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 02:12:21 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 02:12:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 02:12:21 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 02:12:21 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 02:12:21 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 02:12:21 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 02:12:21 - telegram.ext.Application - INFO - Application started
+2026-02-07 02:12:26 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 02:12:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:12:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:12:26 - root - INFO - ✅ Отправлено 2 уведомлений при перезапуске бота
+2026-02-07 02:12:28 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:12:28 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:12:28 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:12:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:12:30 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:12:30 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:12:30 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:12:31 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:13:01 UTC)" (scheduled at 2026-02-06 23:12:31.051650+00:00)
+2026-02-07 02:12:31 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:13:01 UTC)" executed successfully
+2026-02-07 02:12:31 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:12:31 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:12:32 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getFile "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8433063885%3AAAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/photos/file_5.jpg "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - root - INFO - QR-код распознан с помощью pyzbar: {"event": "SMILE PARTY", "ticket_id": "TKT146590",...
+2026-02-07 02:12:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:12:36 - root - ERROR - Ошибка обработки фото QR-кода: 'int' object is not iterable
+2026-02-07 02:12:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:12:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:12:56 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:01 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:13:31 UTC)" (scheduled at 2026-02-06 23:13:01.051650+00:00)
+2026-02-07 02:13:01 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:13:31 UTC)" executed successfully
+2026-02-07 02:13:06 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:16 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:26 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:31 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:14:01 UTC)" (scheduled at 2026-02-06 23:13:31.051650+00:00)
+2026-02-07 02:13:31 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:14:01 UTC)" executed successfully
+2026-02-07 02:13:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:13:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:01 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:14:31 UTC)" (scheduled at 2026-02-06 23:14:01.051650+00:00)
+2026-02-07 02:14:01 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:14:31 UTC)" executed successfully
+2026-02-07 02:14:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:23 - root - INFO - ✅ Таблицы SQLite базы данных инициализированы
+2026-02-07 02:14:23 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:14:23 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:14:23 - root - INFO - 🔧 Проверка структуры базы данных...
+2026-02-07 02:14:23 - root - INFO - ✅ Структура базы данных проверена
+2026-02-07 02:14:23 - root - INFO - 🚀 Запуск SMILE PARTY Bot...
+2026-02-07 02:14:23 - root - INFO - ✅ Статус уведомлений сброшен для всех пользователей
+2026-02-07 02:14:24 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:14:24 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-02-07 02:14:24 - root - INFO - ✅ Запущены периодические задачи
+2026-02-07 02:14:24 - root - INFO - ✅ Бот запущен и готов к работе!
+2026-02-07 02:14:24 - root - INFO - 🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python
+2026-02-07 02:14:24 - root - INFO - 🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены
+2026-02-07 02:14:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getMe "HTTP/1.1 200 OK"
+2026-02-07 02:14:24 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/deleteWebhook "HTTP/1.1 200 OK"
+2026-02-07 02:14:24 - apscheduler.scheduler - INFO - Added job "periodic_notification_check" to job store "default"
+2026-02-07 02:14:24 - apscheduler.scheduler - INFO - Added job "send_reminders" to job store "default"
+2026-02-07 02:14:24 - apscheduler.scheduler - INFO - Scheduler started
+2026-02-07 02:14:24 - telegram.ext.Application - INFO - Application started
+2026-02-07 02:14:29 - root - INFO - 🔄 Начинаю отправку уведомлений о перезапуске...
+2026-02-07 02:14:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:14:30 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:14:30 - root - INFO - ✅ Отправлено 2 уведомлений при перезапуске бота
+2026-02-07 02:14:34 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:15:04 UTC)" (scheduled at 2026-02-06 23:14:34.160575+00:00)
+2026-02-07 02:14:34 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:15:04 UTC)" executed successfully
+2026-02-07 02:14:34 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:38 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:38 - root - INFO - ✅ Пользователь 7978634199 добавлен/обновен
+2026-02-07 02:14:38 - user_actions - INFO - User 7978634199 - start_command - 
+2026-02-07 02:14:39 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:14:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:40 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:41 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:42 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:45 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getFile "HTTP/1.1 200 OK"
+2026-02-07 02:14:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:14:46 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8433063885%3AAAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/photos/file_5.jpg "HTTP/1.1 200 OK"
+2026-02-07 02:14:46 - root - INFO - QR-код распознан с помощью pyzbar: {"event": "SMILE PARTY", "ticket_id": "TKT146590",...
+2026-02-07 02:14:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:46 - root - INFO - Информация о билете получена: TKT146590, гостей: 0
+2026-02-07 02:14:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:51 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:52 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:57 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:14:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:14:58 - root - INFO - ✅ Билет TKT146590 отсканирован пользователем kanagakrest
+2026-02-07 02:14:58 - user_actions - INFO - User kanagakrest - scan_ticket - ticket_id=TKT146590
+2026-02-07 02:14:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:14:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:14:58 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:15:04 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:15:34 UTC)" (scheduled at 2026-02-06 23:15:04.160575+00:00)
+2026-02-07 02:15:04 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:15:34 UTC)" executed successfully
+2026-02-07 02:15:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:18 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:28 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:28 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:29 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:31 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:31 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:32 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:33 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:34 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:16:04 UTC)" (scheduled at 2026-02-06 23:15:34.160575+00:00)
+2026-02-07 02:15:34 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:16:04 UTC)" executed successfully
+2026-02-07 02:15:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:35 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:36 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:37 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:46 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/answerCallbackQuery "HTTP/1.1 200 OK"
+2026-02-07 02:15:48 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/editMessageText "HTTP/1.1 200 OK"
+2026-02-07 02:15:53 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:15:53 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:16:03 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:16:04 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:16:34 UTC)" (scheduled at 2026-02-06 23:16:04.160575+00:00)
+2026-02-07 02:16:04 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:16:34 UTC)" executed successfully
+2026-02-07 02:16:07 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:16:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:16:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:16:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:16:08 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/sendMessage "HTTP/1.1 200 OK"
+2026-02-07 02:16:17 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:16:27 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM/getUpdates "HTTP/1.1 200 OK"
+2026-02-07 02:16:34 - apscheduler.executors.default - INFO - Running job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:17:04 UTC)" (scheduled at 2026-02-06 23:16:34.160575+00:00)
+2026-02-07 02:16:34 - apscheduler.executors.default - INFO - Job "periodic_notification_check (trigger: interval[0:00:30], next run at: 2026-02-06 23:17:04 UTC)" executed successfully
