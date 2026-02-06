@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# ==================== SMILE PARTY BOT - FINAL VERSION ====================
+# ==================== SMILE PARTY BOT - FINAL VERSION WITH QR TICKETS ====================
 
 import warnings
 warnings.filterwarnings("ignore", message="If 'per_message=False'")
@@ -12,16 +12,21 @@ import asyncio
 import sqlite3
 import random
 import string
+import qrcode
+import io
+import base64
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any
 import os
 from contextlib import closing
 import traceback
+import tempfile
 
 # ========== НАСТРОЙКИ БОТА ==========
 BOT_TOKEN = "8433063885:AAFPT2fYk6HQB1gt-x2kxqaIaSJE9U3tQdM"
 ADMIN_IDS = [7978634199, 1037472337]
-PROMOTER_IDS = [7283583682, 6179688188, 8387903981, 8041100755, 1380285963, 1991277474, 8175354320, 6470777539, 8470198654, 7283630429, 8396505232, 8176926325, 8566108065, 7978634199]
+PROMOTER_IDS = [7283583682, 6179688188, 8387903981, 8041100755, 1380285963, 1991277474, 8175354320, 6470777539, 8470198654, 7283630429, 8396505232, 8176926325, 8566108065, 7978634199, 1037472337]
+SCANNER_IDS = [7978634199, 1037472337]  # Добавьте сюда ID контроллеров
 
 # ID каналов и чатов
 CLOSED_ORDERS_CHANNEL_ID = -1003780187586
@@ -32,6 +37,19 @@ LOGS_CHANNEL_ID = -1003610531501
 
 # Файл базы данных
 DB_FILE = "smile_party_bot.db"
+
+# ========== НАСТРОЙКИ ТИПОВ БИЛЕТОВ ==========
+TICKET_TYPES = {
+    "standard": {
+        "name": "Танцпол 🎟",
+        "price_standard": 450,
+        "price_group": 350
+    },
+    "vip": {
+        "name": "VIP 🎩",
+        "price": 650
+    }
+}
 
 # ========== НАСТРОЙКА ЛОГИРОВАНИЯ ==========
 logging.basicConfig(
@@ -77,6 +95,184 @@ async def send_log_to_channel(context: ContextTypes.DEFAULT_TYPE, message: str, 
         )
     except Exception as e:
         print(f"Ошибка отправки лога в канал: {e}")
+
+# ========== QR-КОД ФУНКЦИИ ==========
+def generate_ticket_qr(ticket_data: Dict) -> str:
+    """
+    Генерирует QR-код для билета
+    Возвращает base64 строку изображения
+    """
+    try:
+        # Формируем данные для QR-кода
+        qr_data = {
+            "event": "SMILE PARTY",
+            "ticket_id": ticket_data["ticket_id"],
+            "code": ticket_data["order_code"],
+            "type": ticket_data["ticket_type"],
+            "guest_name": ticket_data["guest_name"],
+            "valid": True
+        }
+        
+        # Преобразуем в строку JSON
+        qr_string = json.dumps(qr_data, ensure_ascii=False)
+        
+        # Создаем QR-код
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(qr_string)
+        qr.make(fit=True)
+        
+        # Создаем изображение
+        img = qr.make_image(fill_color="black", back_color="white")
+        
+        # Конвертируем в base64
+        buffered = io.BytesIO()
+        img.save(buffered, format="PNG")
+        img_str = base64.b64encode(buffered.getvalue()).decode()
+        
+        return img_str
+        
+    except Exception as e:
+        logger.error(f"Ошибка генерации QR-кода: {e}")
+        return None
+
+def verify_ticket_qr(qr_data: str) -> Dict:
+    """
+    Проверяет QR-код билета
+    Возвращает информацию о билете
+    """
+    try:
+        # Убираем лишние пробелы и кавычки
+        qr_data = qr_data.strip()
+        
+        # Пробуем разобрать как JSON
+        try:
+            ticket_info = json.loads(qr_data)
+        except json.JSONDecodeError:
+            # Если не JSON, пробуем разобрать как простой текст в формате ключ=значение
+            logger.warning(f"QR-данные не в JSON формате: {qr_data[:100]}")
+            
+            # Пробуем различные форматы
+            if 'ticket_id' in qr_data and 'code' in qr_data:
+                # Пробуем разобрать как простой словарь в строке
+                try:
+                    ticket_info = {}
+                    pairs = qr_data.strip('{}').split(',')
+                    for pair in pairs:
+                        if ':' in pair:
+                            key, value = pair.split(':', 1)
+                            key = key.strip().strip('"\'')
+                            value = value.strip().strip('"\'')
+                            ticket_info[key] = value
+                except Exception as e:
+                    logger.error(f"Ошибка парсинга простого формата: {e}")
+                    return {"valid": False, "error": "Неверный формат QR-кода"}
+            else:
+                return {"valid": False, "error": "Неверный формат QR-кода"}
+        
+        # Проверяем обязательные поля
+        required_fields = ["ticket_id", "code", "type", "guest_name", "valid"]
+        if not all(field in ticket_info for field in required_fields):
+            return {"valid": False, "error": "Неверный формат QR-кода"}
+        
+        # Проверяем в базе данных
+        with closing(sqlite3.connect(DB_FILE)) as conn:
+            cursor = conn.cursor()
+            
+            # Проверяем билет по ID
+            cursor.execute("""
+                SELECT t.*, o.user_name, o.username, o.user_email, o.group_size, o.order_id
+                FROM tickets t
+                JOIN orders o ON t.order_id = o.order_id
+                WHERE t.ticket_id = ? AND t.status = 'active'
+            """, (ticket_info["ticket_id"],))
+            
+            ticket = cursor.fetchone()
+            
+            if not ticket:
+                return {"valid": False, "error": "Билет не найден"}
+            
+            # Проверяем, не использован ли уже
+            if ticket[7] == "used":  # status поле
+                return {"valid": False, "error": "Билет уже использован"}
+            
+            # Получаем список всех гостей из заказа
+            cursor.execute("""
+                SELECT full_name FROM guests 
+                WHERE order_id = ? 
+                ORDER BY guest_number
+            """, (ticket[12],))  # order_id из ticket[12]
+            
+            guests = cursor.fetchall()
+            guest_names = [guest[0] for guest in guests] if guests else []
+            
+            # Возвращаем информацию о билете
+            return {
+                "valid": True,
+                "ticket_id": ticket[0],
+                "order_code": ticket[1],
+                "ticket_type": ticket[2],
+                "guest_name": ticket[3],
+                "ticket_number": ticket[4],
+                "qr_code": ticket[5],
+                "status": ticket[7],
+                "scanned_at": ticket[8],
+                "scanned_by": ticket[9],
+                "user_name": ticket[10],
+                "username": ticket[11],
+                "group_size": ticket[13],
+                "order_id": ticket[12],
+                "all_guests": guest_names
+            }
+            
+    except Exception as e:
+        logger.error(f"Ошибка проверки QR-кода: {e}")
+        return {"valid": False, "error": f"Ошибка проверки: {str(e)}"}
+
+# ========== ФУНКЦИЯ ДЛЯ РАСПОЗНАВАНИЯ QR-КОДА С ФОТО ==========
+async def decode_qr_from_photo(photo_file) -> Optional[str]:
+    """
+    Распознает QR-код с фото
+    Возвращает текст из QR-кода или None если не удалось распознать
+    """
+    try:
+        # Сначала пробуем использовать pyzbar, если он установлен
+        try:
+            from pyzbar.pyzbar import decode
+            from PIL import Image
+            import numpy as np
+            
+            # Скачиваем фото
+            photo_bytes = await photo_file.download_as_bytearray()
+            
+            # Открываем изображение с помощью PIL
+            image = Image.open(io.BytesIO(photo_bytes))
+            
+            # Конвертируем в numpy array для pyzbar
+            image_np = np.array(image)
+            
+            # Распознаем QR-код
+            decoded_objects = decode(image_np)
+            
+            if decoded_objects:
+                qr_data = decoded_objects[0].data.decode('utf-8')
+                logger.info(f"QR-код распознан с помощью pyzbar: {qr_data[:50]}...")
+                return qr_data
+            
+        except ImportError as e:
+            logger.warning(f"pyzbar не установлен: {e}")
+        
+        # Если pyzbar не сработал, пробуем другие методы или возвращаем None
+        logger.warning("Не удалось распознать QR-код с фото. Установите библиотеки: pip install pyzbar pillow")
+        return None
+        
+    except Exception as e:
+        logger.error(f"Ошибка распознавания QR-кода с фото: {e}")
+        return None
 
 # ========== ФУНКЦИИ ДЛЯ ГЕНЕРАЦИИ УНИКАЛЬНЫХ КОДОВ ==========
 def generate_unique_code(length: int = 6) -> str:
@@ -156,6 +352,26 @@ class Database:
                 )
             """)
             
+            # НОВАЯ ТАБЛИЦА ДЛЯ БИЛЕТОВ
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS tickets (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    ticket_id VARCHAR(50) UNIQUE NOT NULL,
+                    order_code VARCHAR(20) NOT NULL,
+                    order_id VARCHAR(20) NOT NULL,
+                    ticket_type VARCHAR(20) NOT NULL,
+                    guest_name VARCHAR(200) NOT NULL,
+                    ticket_number INTEGER NOT NULL,
+                    qr_code TEXT,
+                    status VARCHAR(20) DEFAULT 'active',
+                    scanned_at TIMESTAMP,
+                    scanned_by VARCHAR(100),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+                    UNIQUE(order_id, ticket_number)
+                )
+            """)
+            
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS guests (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -169,6 +385,11 @@ class Database:
                 )
             """)
             
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_tickets_order_id ON tickets(order_id)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_tickets_ticket_id ON tickets(ticket_id)")
+            cursor.execute("CREATE INDEX IF NOT EXISTS idx_tickets_status ON tickets(status)")
+            
+            # Остальные индексы
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders(user_id)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status)")
             cursor.execute("CREATE INDEX IF NOT EXISTS idx_orders_code ON orders(order_code)")
@@ -207,6 +428,161 @@ class Database:
         self.add_column_if_not_exists("orders", "notified_promoters", "BOOLEAN DEFAULT FALSE")
         
         logger.info("✅ Структура базы данных проверена")
+    
+    def create_ticket(self, order_id: str, order_code: str, ticket_type: str, 
+                     guest_name: str, ticket_number: int) -> Dict:
+        """Создать билет для гостя"""
+        try:
+            with closing(self.get_connection()) as conn:
+                cursor = conn.cursor()
+                
+                # Генерируем уникальный ID билета
+                ticket_id = f"TKT{random.randint(100000, 999999)}"
+                
+                # Создаем данные для QR-кода
+                ticket_data = {
+                    "ticket_id": ticket_id,
+                    "order_code": order_code,
+                    "ticket_type": ticket_type,
+                    "guest_name": guest_name,
+                    "ticket_number": ticket_number
+                }
+                
+                # Генерируем QR-код
+                qr_base64 = generate_ticket_qr(ticket_data)
+                
+                if not qr_base64:
+                    return None
+                
+                # Сохраняем билет в базу
+                cursor.execute("""
+                    INSERT INTO tickets 
+                    (ticket_id, order_code, order_id, ticket_type, guest_name, 
+                     ticket_number, qr_code, status)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, 'active')
+                """, (ticket_id, order_code, order_id, ticket_type, guest_name, 
+                      ticket_number, qr_base64))
+                
+                conn.commit()
+                
+                logger.info(f"✅ Создан билет {ticket_id} для гостя {guest_name}")
+                
+                return {
+                    "ticket_id": ticket_id,
+                    "order_code": order_code,
+                    "order_id": order_id,
+                    "ticket_type": ticket_type,
+                    "guest_name": guest_name,
+                    "ticket_number": ticket_number,
+                    "qr_code": qr_base64,
+                    "status": "active"
+                }
+                
+        except Exception as e:
+            logger.error(f"❌ Ошибка создания билета: {e}")
+            return None
+    
+    def create_tickets_for_order(self, order_id: str, order_code: str, 
+                                ticket_type: str, guests: List[str]) -> List[Dict]:
+        """Создать билеты для всех гостей в заказе"""
+        tickets = []
+        for i, guest_name in enumerate(guests, 1):
+            ticket = self.create_ticket(order_id, order_code, ticket_type, guest_name, i)
+            if ticket:
+                tickets.append(ticket)
+        return tickets
+    
+    def get_ticket_by_id(self, ticket_id: str) -> Optional[Dict]:
+        """Получить билет по ID"""
+        try:
+            with closing(self.get_connection()) as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    SELECT t.*, o.user_name, o.username, o.group_size, o.order_id
+                    FROM tickets t
+                    JOIN orders o ON t.order_id = o.order_id
+                    WHERE t.ticket_id = ?
+                """, (ticket_id,))
+                result = cursor.fetchone()
+                return dict(result) if result else None
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения билета: {e}")
+            return None
+    
+    def get_tickets_by_order(self, order_id: str) -> List[Dict]:
+        """Получить все билеты заказа"""
+        try:
+            with closing(self.get_connection()) as conn:
+                cursor = conn.cursor()
+                cursor.execute("SELECT * FROM tickets WHERE order_id = ? ORDER BY ticket_number", (order_id,))
+                results = cursor.fetchall()
+                return [dict(row) for row in results]
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения билетов заказа: {e}")
+            return []
+    
+    def scan_ticket(self, ticket_id: str, scanner_username: str) -> bool:
+        """Отметить билет как использованный"""
+        try:
+            with closing(self.get_connection()) as conn:
+                cursor = conn.cursor()
+                cursor.execute("""
+                    UPDATE tickets 
+                    SET status = 'used', scanned_at = CURRENT_TIMESTAMP, scanned_by = ?
+                    WHERE ticket_id = ? AND status = 'active'
+                """, (scanner_username, ticket_id))
+                
+                conn.commit()
+                
+                if cursor.rowcount > 0:
+                    logger.info(f"✅ Билет {ticket_id} отсканирован пользователем {scanner_username}")
+                    return True
+                else:
+                    return False
+                    
+        except Exception as e:
+            logger.error(f"❌ Ошибка сканирования билета: {e}")
+            return False
+    
+    def get_ticket_statistics(self) -> Dict:
+        """Получить статистику по билетам"""
+        try:
+            with closing(self.get_connection()) as conn:
+                cursor = conn.cursor()
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets")
+                total_tickets = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE status = 'active'")
+                active_tickets = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE status = 'used'")
+                used_tickets = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE ticket_type = 'standard'")
+                standard_tickets = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE ticket_type = 'vip'")
+                vip_tickets = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE ticket_type = 'standard' AND status = 'used'")
+                used_standard = cursor.fetchone()[0] or 0
+                
+                cursor.execute("SELECT COUNT(*) FROM tickets WHERE ticket_type = 'vip' AND status = 'used'")
+                used_vip = cursor.fetchone()[0] or 0
+                
+                return {
+                    "total_tickets": total_tickets,
+                    "active_tickets": active_tickets,
+                    "used_tickets": used_tickets,
+                    "standard_tickets": standard_tickets,
+                    "vip_tickets": vip_tickets,
+                    "used_standard": used_standard,
+                    "used_vip": used_vip
+                }
+        except Exception as e:
+            logger.error(f"❌ Ошибка получения статистики билетов: {e}")
+            return {}
     
     def get_setting(self, key: str, default: Any = None) -> Any:
         """Получить значение настройки"""
@@ -263,7 +639,7 @@ class Database:
                 """, (user_id, username, first_name, last_name, role))
                 
                 conn.commit()
-                logger.info(f"✅ Пользователь {user_id} добавлен/обновлен")
+                logger.info(f"✅ Пользователь {user_id} добавлен/обновен")
                 return True
         except Exception as e:
             logger.error(f"❌ Ошибка добавления пользователя {user_id}: {e}")
@@ -735,8 +1111,9 @@ event_settings = EventSettings(db)
     ADMIN_EDIT_TEXT,
     PROMOTER_VIEW_ORDER,
     PROMOTER_DEFERRED,
-    ADMIN_RESET_STATS
-) = range(14)
+    ADMIN_RESET_STATS,
+    SCAN_QR_MODE  # Новое состояние для режима сканирования
+) = range(15)
 
 # ========== ПОМОЩНИКИ ==========
 def get_user_role(user_id: int) -> str:
@@ -971,6 +1348,605 @@ def is_own_order(order: Dict, user_id: int) -> bool:
     """Проверяет, является ли заказ собственным для пользователя"""
     return order["user_id"] == user_id
 
+# ========== ФУНКЦИИ ДЛЯ БИЛЕТОВ И QR-КОДОВ ==========
+async def create_tickets_after_purchase(context: ContextTypes.DEFAULT_TYPE, order: Dict):
+    """Создать билеты после успешной покупки"""
+    try:
+        # Получаем список гостей
+        guests = db.get_order_guests(order['order_id'])
+        guest_names = [guest['full_name'] for guest in guests]
+        
+        # Создаем билеты для каждого гостя
+        tickets = db.create_tickets_for_order(
+            order['order_id'],
+            order['order_code'],
+            order['ticket_type'],
+            guest_names
+        )
+        
+        logger.info(f"✅ Создано {len(tickets)} билетов для заказа {order['order_id']}")
+        return tickets
+        
+    except Exception as e:
+        logger.error(f"❌ Ошибка создания билетов: {e}")
+        return []
+
+async def send_tickets_to_user(context: ContextTypes.DEFAULT_TYPE, user_id: int, order: Dict):
+    """Отправить билеты пользователю"""
+    try:
+        # Получаем все билеты заказа
+        tickets = db.get_tickets_by_order(order['order_id'])
+        
+        if not tickets:
+            logger.warning(f"Нет билетов для заказа {order['order_id']}")
+            return
+        
+        # Отправляем сообщение о билетах
+        ticket_type_text = "VIP 🎩" if order['ticket_type'] == 'vip' else "Танцпол 🎟"
+        
+        intro_text = (
+            f"🎫 *ВАШИ БИЛЕТЫ НА SMILE PARTY*\n\n"
+            f"🔑 *Код заказа:* `{order['order_code']}`\n"
+            f"🎟 *Тип билетов:* {ticket_type_text}\n"
+            f"👥 *Количество:* {len(tickets)} шт.\n\n"
+            f"*💡 КАК ПОЛЬЗОВАТЬСЯ:*\n"
+            f"1. Сохраните QR-код каждого билета\n"
+            f"2. Покажите QR-код на входе\n"
+            f"3. Каждый гость должен пройти отдельно\n\n"
+            f"📱 *Сохраните билеты в галерею!*"
+        )
+        
+        await context.bot.send_message(
+            chat_id=user_id,
+            text=intro_text,
+            parse_mode=ParseMode.MARKDOWN
+        )
+        
+        # Отправляем каждый билет отдельным сообщением
+        for ticket in tickets:
+            # Преобразуем base64 обратно в изображение
+            qr_base64 = ticket['qr_code']
+            qr_image = base64.b64decode(qr_base64)
+            
+            ticket_type_text = "VIP 🎩" if ticket['ticket_type'] == 'vip' else "Танцпол 🎟"
+            
+            caption = (
+                f"🎫 *БИЛЕТ #{ticket['ticket_number']}*\n\n"
+                f"👤 *Гость:* {ticket['guest_name']}\n"
+                f"🎟 *Тип:* {ticket_type_text}\n"
+                f"🆔 *ID билета:* `{ticket['ticket_id']}`\n"
+                f"🔑 *Код заказа:* `{ticket['order_code']}`\n\n"
+                f"*📱 Покажите этот QR-код на входе*"
+            )
+            
+            # Отправляем изображение QR-кода
+            await context.bot.send_photo(
+                chat_id=user_id,
+                photo=io.BytesIO(qr_image),
+                caption=caption,
+                parse_mode=ParseMode.MARKDOWN
+            )
+            
+            await asyncio.sleep(0.5)  # Задержка между отправками
+        
+        logger.info(f"✅ Билеты отправлены пользователю {user_id}")
+        
+    except Exception as e:
+        logger.error(f"❌ Ошибка отправки билетов пользователю: {e}")
+
+# ========== НОВЫЕ КОМАНДЫ ДЛЯ СКАНИРОВАНИЯ QR-КОДОВ ==========
+async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда для сканирования QR-кода"""
+    user = update.effective_user
+    
+    # Проверяем права
+    if user.id not in ADMIN_IDS + PROMOTER_IDS + SCANNER_IDS:
+        await update.message.reply_text(
+            "❌ *У вас нет прав для сканирования билетов*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+    
+    await update.message.reply_text(
+        "📱 *Режим сканирования QR-кодов*\n\n"
+        "Теперь вы можете:\n"
+        "1. Отправить фото QR-кода 📸\n"
+        "2. Отправить текст из QR-кода 📝\n\n"
+        "Бот распознает QR-код и покажет информацию о билете.\n\n"
+        "Используйте /cancel для выхода",
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    context.user_data['scanning_mode'] = True
+    return SCAN_QR_MODE
+
+async def handle_qr_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обработчик фото с QR-кодом"""
+    try:
+        user = update.effective_user
+        
+        if not context.user_data.get('scanning_mode', False):
+            return MAIN_MENU
+        
+        # Получаем фото (берем самое большое качество)
+        photo = update.message.photo[-1]
+        photo_file = await photo.get_file()
+        
+        # Показываем статус обработки
+        status_msg = await update.message.reply_text(
+            "🔍 *Распознаю QR-код...*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        
+        # Распознаем QR-код с фото
+        qr_data = await decode_qr_from_photo(photo_file)
+        
+        if not qr_data:
+            await status_msg.edit_text(
+                "❌ *Не удалось распознать QR-код*\n\n"
+                "Пожалуйста:\n"
+                "1. Убедитесь, что фото четкое\n"
+                "2. QR-код хорошо освещен\n"
+                "3. Попробуйте отправить текст из QR-кода\n\n"
+                "Или отправьте другое фото.",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return SCAN_QR_MODE
+        
+        # Обновляем статус
+        await status_msg.edit_text(
+            "✅ *QR-код распознан!*\n\n"
+            "Проверяю билет...",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        
+        # Проверяем QR-код
+        ticket_info = verify_ticket_qr(qr_data)
+        
+        if not ticket_info.get("valid", False):
+            await status_msg.edit_text(
+                f"❌ *НЕДЕЙСТВИТЕЛЬНЫЙ БИЛЕТ*\n\n"
+                f"Причина: {ticket_info.get('error', 'Неизвестная ошибка')}",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            
+            # Выходим из режима сканирования
+            context.user_data.pop('scanning_mode', None)
+            
+            role = get_user_role(user.id)
+            await update.message.reply_text(
+                f"🏠 *Главное меню*\n\n"
+                f"Выберите действие:",
+                reply_markup=get_main_menu_keyboard(role),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return MAIN_MENU
+        
+        # Показываем информацию о билете
+        ticket_type_text = "VIP 🎩" if ticket_info["ticket_type"] == "vip" else "Танцпол 🎟"
+        ticket_type_emoji = "🎩" if ticket_info["ticket_type"] == "vip" else "🎟"
+        
+        # Форматируем список всех гостей
+        all_guests_text = ""
+        if "all_guests" in ticket_info and ticket_info["all_guests"]:
+            all_guests = ticket_info["all_guests"]
+            all_guests_text = "\n\n👥 *Все гости в заказе:*\n"
+            for i, guest in enumerate(all_guests, 1):
+                guest_marker = "✅" if guest == ticket_info['guest_name'] else "○"
+                all_guests_text += f"{i}. {guest_marker} {guest}\n"
+        
+        await status_msg.edit_text(
+            f"✅ *БИЛЕТ РАСПОЗНАН!*\n\n"
+            f"{ticket_type_emoji} *Тип билета:* {ticket_type_text}\n"
+            f"👤 *Гость:* {ticket_info['guest_name']}\n"
+            f"🔢 *Номер билета:* {ticket_info['ticket_number']}\n"
+            f"👥 *Всего в заказе:* {ticket_info.get('group_size', 1)} человек\n"
+            f"🔑 *Код заказа:* `{ticket_info['order_code']}`\n"
+            f"🆔 *ID билета:* `{ticket_info['ticket_id']}`\n"
+            f"*Статус:* {'✅ Активен' if ticket_info['status'] == 'active' else '❌ Использован'}\n"
+            f"{all_guests_text}\n"
+            f"Хотите отметить билет как использованный?",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("✅ Отметить как использованный", 
+                                       callback_data=f"scan_mark_used_{ticket_info['ticket_id']}"),
+                ],
+                [
+                    InlineKeyboardButton("📋 Только информация", 
+                                       callback_data=f"scan_info_only_{ticket_info['ticket_id']}")
+                ]
+            ])
+        )
+        
+    except Exception as e:
+        logger.error(f"Ошибка обработки фото QR-кода: {e}")
+        await update.message.reply_text(
+            "❌ *Ошибка при распознавании QR-кода*\n\n"
+            "Пожалуйста, попробуйте еще раз или отправьте текст из QR-кода.",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return SCAN_QR_MODE
+
+async def handle_qr_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обработчик текстовых QR-кодов"""
+    try:
+        user = update.effective_user
+        
+        if not context.user_data.get('scanning_mode', False):
+            return MAIN_MENU
+        
+        qr_data = update.message.text.strip()
+        
+        if not qr_data:
+            await update.message.reply_text(
+                "❌ *Пустой QR-код*\n\n"
+                "Отправьте текст из QR-кода:",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return SCAN_QR_MODE
+        
+        # Показываем статус обработки
+        status_msg = await update.message.reply_text(
+            "🔍 *Проверяю QR-код...*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        
+        # Проверяем QR-код
+        ticket_info = verify_ticket_qr(qr_data)
+        
+        if not ticket_info.get("valid", False):
+            await status_msg.edit_text(
+                f"❌ *НЕДЕЙСТВИТЕЛЬНЫЙ БИЛЕТ*\n\n"
+                f"Причина: {ticket_info.get('error', 'Неизвестная ошибка')}",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            
+            # Выходим из режима сканирования
+            context.user_data.pop('scanning_mode', None)
+            
+            role = get_user_role(user.id)
+            await update.message.reply_text(
+                f"🏠 *Главное меню*\n\n"
+                f"Выберите действие:",
+                reply_markup=get_main_menu_keyboard(role),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return MAIN_MENU
+        
+        # Показываем информацию о билете
+        ticket_type_text = "VIP 🎩" if ticket_info["ticket_type"] == "vip" else "Танцпол 🎟"
+        ticket_type_emoji = "🎩" if ticket_info["ticket_type"] == "vip" else "🎟"
+        
+        # Форматируем список всех гостей
+        all_guests_text = ""
+        if "all_guests" in ticket_info and ticket_info["all_guests"]:
+            all_guests = ticket_info["all_guests"]
+            all_guests_text = "\n\n👥 *Все гости в заказе:*\n"
+            for i, guest in enumerate(all_guests, 1):
+                guest_marker = "✅" if guest == ticket_info['guest_name'] else "○"
+                all_guests_text += f"{i}. {guest_marker} {guest}\n"
+        
+        await status_msg.edit_text(
+            f"✅ *БИЛЕТ ПРОВЕРЕН!*\n\n"
+            f"{ticket_type_emoji} *Тип билета:* {ticket_type_text}\n"
+            f"👤 *Гость:* {ticket_info['guest_name']}\n"
+            f"🔢 *Номер билета:* {ticket_info['ticket_number']}\n"
+            f"👥 *Всего в заказе:* {ticket_info.get('group_size', 1)} человек\n"
+            f"🔑 *Код заказа:* `{ticket_info['order_code']}`\n"
+            f"🆔 *ID билета:* `{ticket_info['ticket_id']}`\n"
+            f"*Статус:* {'✅ Активен' if ticket_info['status'] == 'active' else '❌ Использован'}\n"
+            f"{all_guests_text}\n"
+            f"Хотите отметить билет как использованный?",
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton("✅ Отметить как использованный", 
+                                       callback_data=f"scan_mark_used_{ticket_info['ticket_id']}"),
+                ],
+                [
+                    InlineKeyboardButton("📋 Только информация", 
+                                       callback_data=f"scan_info_only_{ticket_info['ticket_id']}")
+                ]
+            ])
+        )
+        
+    except Exception as e:
+        logger.error(f"Ошибка обработки текстового QR-кода: {e}")
+        await update.message.reply_text(
+            "❌ *Ошибка при проверке QR-кода*\n\n"
+            "Пожалуйста, попробуйте еще раз.",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return SCAN_QR_MODE
+
+async def check_ticket_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда для проверки билета по ID"""
+    user = update.effective_user
+    
+    if user.id not in ADMIN_IDS + PROMOTER_IDS + SCANNER_IDS:
+        await update.message.reply_text(
+            "❌ *У вас нет прав для проверки билетов*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+    
+    if context.args:
+        ticket_id = context.args[0]
+        ticket = db.get_ticket_by_id(ticket_id)
+        
+        if ticket:
+            # Получаем список всех гостей
+            guests = db.get_order_guests(ticket["order_id"])
+            guest_names = [guest['full_name'] for guest in guests] if guests else []
+            
+            ticket_type_text = "VIP 🎩" if ticket["ticket_type"] == "vip" else "Танцпол 🎟"
+            status_text = "✅ Активен" if ticket["status"] == "active" else "❌ Использован"
+            
+            # Форматируем список всех гостей
+            all_guests_text = ""
+            if guest_names:
+                all_guests_text = "\n👥 *Все гости в заказе:*\n"
+                for i, guest in enumerate(guest_names, 1):
+                    guest_marker = "✅" if guest == ticket['guest_name'] else "○"
+                    all_guests_text += f"{i}. {guest_marker} {guest}\n"
+            
+            text = (
+                f"🎫 *ИНФОРМАЦИЯ О БИЛЕТЕ*\n\n"
+                f"🆔 *ID билета:* `{ticket['ticket_id']}`\n"
+                f"🎟 *Тип:* {ticket_type_text}\n"
+                f"👤 *Гость:* {ticket['guest_name']}\n"
+                f"🔢 *Номер:* {ticket['ticket_number']}\n"
+                f"👥 *Всего в заказе:* {ticket.get('group_size', 1)} человек\n"
+                f"🔑 *Код заказа:* `{ticket['order_code']}`\n"
+                f"📊 *Статус:* {status_text}\n"
+                f"👤 *Покупатель:* {ticket['user_name']}\n"
+                f"{all_guests_text}"
+            )
+            
+            if ticket.get('scanned_at'):
+                scanned_at = ticket['scanned_at']
+                if isinstance(scanned_at, str):
+                    scanned_time = scanned_at[:19].replace('T', ' ')
+                else:
+                    scanned_time = scanned_at.strftime('%d.%m.%Y %H:%M:%S')
+                
+                text += f"\n⏰ *Время сканирования:* {scanned_time}\n"
+                text += f"👨‍💼 *Сканировал:* {ticket['scanned_by']}\n"
+            
+            await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
+        else:
+            await update.message.reply_text(
+                f"❌ *Билет с ID {ticket_id} не найден*",
+                parse_mode=ParseMode.MARKDOWN
+            )
+    else:
+        await update.message.reply_text(
+            "❌ *Укажите ID билета*\n\n"
+            "Пример: /check_ticket TKT123456",
+            parse_mode=ParseMode.MARKDOWN
+        )
+
+async def ticket_stats_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда для получения статистики по билетам"""
+    user = update.effective_user
+    
+    if user.id not in ADMIN_IDS + PROMOTER_IDS:
+        await update.message.reply_text(
+            "❌ *У вас нет прав для просмотра статистики*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+    
+    stats = db.get_ticket_statistics()
+    
+    text = (
+        "📊 *СТАТИСТИКА БИЛЕТОВ*\n\n"
+        f"🎫 *Всего билетов:* {stats.get('total_tickets', 0)}\n"
+        f"🟢 *Активных:* {stats.get('active_tickets', 0)}\n"
+        f"✅ *Использовано:* {stats.get('used_tickets', 0)}\n\n"
+        f"🎟 *Танцпол:*\n"
+        f"• Всего: {stats.get('standard_tickets', 0)}\n"
+        f"• Использовано: {stats.get('used_standard', 0)}\n\n"
+        f"🎩 *VIP:*\n"
+        f"• Всего: {stats.get('vip_tickets', 0)}\n"
+        f"• Использовано: {stats.get('used_vip', 0)}"
+    )
+    
+    await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
+
+async def my_tickets_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Команда для получения своих билетов"""
+    user = update.effective_user
+    
+    # Получаем последний активный заказ пользователя
+    orders = db.get_user_orders(user.id)
+    if not orders:
+        await update.message.reply_text(
+            "❌ *У вас нет покупок*\n\n"
+            "Купите билеты, чтобы получить QR-коды.",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+    
+    # Ищем последний закрытый заказ
+    latest_order = None
+    for order in orders:
+        if order['status'] == 'closed':
+            latest_order = order
+            break
+    
+    if not latest_order:
+        await update.message.reply_text(
+            "❌ *У вас нет подтвержденных покупок*\n\n"
+            "Ваши заказы еще не обработаны промоутером.",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+    
+    # Отправляем билеты
+    await send_tickets_to_user(context, user.id, latest_order)
+    
+    role = get_user_role(user.id)
+    await update.message.reply_text(
+        f"✅ *Билеты отправлены!*\n\n"
+        "Проверьте чат с ботом - мы отправили вам все QR-коды.",
+        reply_markup=get_main_menu_keyboard(role),
+        parse_mode=ParseMode.MARKDOWN
+    )
+    
+    return MAIN_MENU
+
+# ========== ОБРАБОТЧИКИ ДЛЯ КНОПОК СКАНИРОВАНИЯ ==========
+async def handle_scan_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Обработчик кнопок сканирования"""
+    query = update.callback_query
+    await query.answer()
+    
+    user_id = query.from_user.id
+    data = query.data
+    
+    try:
+        if data.startswith("scan_mark_used_"):
+            ticket_id = data.replace("scan_mark_used_", "")
+            scanner_username = query.from_user.username or f"user_{user_id}"
+            
+            if db.scan_ticket(ticket_id, scanner_username):
+                ticket = db.get_ticket_by_id(ticket_id)
+                
+                if ticket:
+                    # Получаем список всех гостей
+                    guests = db.get_order_guests(ticket["order_id"])
+                    guest_names = [guest['full_name'] for guest in guests] if guests else []
+                    
+                    ticket_type_text = "VIP 🎩" if ticket["ticket_type"] == "vip" else "Танцпол 🎟"
+                    ticket_type_emoji = "🎩" if ticket["ticket_type"] == "vip" else "🎟"
+                    
+                    # Форматируем список всех гостей
+                    all_guests_text = ""
+                    if guest_names:
+                        all_guests_text = "\n👥 *Все гости в заказе:*\n"
+                        for i, guest in enumerate(guest_names, 1):
+                            guest_marker = "✅" if guest == ticket['guest_name'] else "○"
+                            all_guests_text += f"{i}. {guest_marker} {guest}\n"
+                    
+                    await query.edit_message_text(
+                        f"✅ *БИЛЕТ ОТМЕЧЕН КАК ИСПОЛЬЗОВАННЫЙ!*\n\n"
+                        f"{ticket_type_emoji} *Тип билета:* {ticket_type_text}\n"
+                        f"👤 *Гость:* {ticket['guest_name']}\n"
+                        f"🔢 *Номер билета:* {ticket['ticket_number']}\n"
+                        f"👥 *Всего в заказе:* {ticket.get('group_size', 1)} человек\n"
+                        f"🔑 *Код заказа:* `{ticket['order_code']}`\n"
+                        f"🆔 *ID билета:* `{ticket['ticket_id']}`\n"
+                        f"{all_guests_text}\n"
+                        f"📱 *Отметил:* @{scanner_username}\n"
+                        f"⏰ *Время:* {datetime.now().strftime('%H:%M:%S')}\n\n"
+                        f"*Билет успешно использован!*",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    
+                    # Отправляем уведомление в канал
+                    await send_log_to_channel(
+                        context, 
+                        f"Билет отсканирован и использован: {ticket['guest_name']} ({ticket_type_text}) - {scanner_username}"
+                    )
+                else:
+                    await query.edit_message_text(
+                        "✅ *Билет отмечен как использованный*\n\n"
+                        "Информация о билете обновлена.",
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+            else:
+                await query.edit_message_text(
+                    "❌ *Ошибка при отметке билета*\n\n"
+                    "Билет уже был использован или произошла ошибка.",
+                    parse_mode=ParseMode.MARKDOWN
+                )
+            
+            # Выходим из режима сканирования
+            context.user_data.pop('scanning_mode', None)
+            
+            role = get_user_role(user_id)
+            await query.message.reply_text(
+                f"🏠 *Главное меню*\n\n"
+                f"Выберите действие:",
+                reply_markup=get_main_menu_keyboard(role),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return MAIN_MENU
+            
+        elif data.startswith("scan_info_only_"):
+            ticket_id = data.replace("scan_info_only_", "")
+            ticket = db.get_ticket_by_id(ticket_id)
+            
+            if ticket:
+                # Получаем список всех гостей
+                guests = db.get_order_guests(ticket["order_id"])
+                guest_names = [guest['full_name'] for guest in guests] if guests else []
+                
+                ticket_type_text = "VIP 🎩" if ticket["ticket_type"] == "vip" else "Танцпол 🎟"
+                ticket_type_emoji = "🎩" if ticket["ticket_type"] == "vip" else "🎟"
+                
+                # Форматируем список всех гостей
+                all_guests_text = ""
+                if guest_names:
+                    all_guests_text = "\n👥 *Все гости в заказе:*\n"
+                    for i, guest in enumerate(guest_names, 1):
+                        guest_marker = "✅" if guest == ticket['guest_name'] else "○"
+                        all_guests_text += f"{i}. {guest_marker} {guest}\n"
+                
+                await query.edit_message_text(
+                    f"📋 *ИНФОРМАЦИЯ О БИЛЕТЕ*\n\n"
+                    f"{ticket_type_emoji} *Тип билета:* {ticket_type_text}\n"
+                    f"👤 *Гость:* {ticket['guest_name']}\n"
+                    f"🔢 *Номер билета:* {ticket['ticket_number']}\n"
+                    f"👥 *Всего в заказе:* {ticket.get('group_size', 1)} человек\n"
+                    f"🔑 *Код заказа:* `{ticket['order_code']}`\n"
+                    f"🆔 *ID билета:* `{ticket['ticket_id']}`\n"
+                    f"📊 *Статус:* {'✅ Активен' if ticket['status'] == 'active' else '❌ Использован'}\n"
+                    f"👤 *Покупатель:* {ticket['user_name']}\n"
+                    f"{all_guests_text}\n"
+                    f"Что дальше?",
+                    parse_mode=ParseMode.MARKDOWN,
+                    reply_markup=InlineKeyboardMarkup([
+                        [
+                            InlineKeyboardButton("✅ Отметить как использованный", 
+                                               callback_data=f"scan_mark_used_{ticket_id}"),
+                        ],
+                        [
+                            InlineKeyboardButton("🔍 Сканировать другой билет", 
+                                               callback_data="scan_another")
+                        ],
+                        [
+                            InlineKeyboardButton("🏠 В главное меню", 
+                                               callback_data="back_to_menu")
+                        ]
+                    ])
+                )
+            else:
+                await query.edit_message_text(
+                    "❌ *Билет не найден*",
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return MAIN_MENU
+                
+        elif data == "scan_another":
+            context.user_data['scanning_mode'] = True
+            await query.edit_message_text(
+                "📱 *Режим сканирования QR-кодов*\n\n"
+                "Отправьте фото QR-кода или текст из QR-кода:",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return SCAN_QR_MODE
+            
+    except Exception as e:
+        logger.error(f"Ошибка в обработчике кнопок сканирования: {e}")
+        await query.edit_message_text(
+            "❌ *Произошла ошибка*",
+            parse_mode=ParseMode.MARKDOWN
+        )
+        return MAIN_MENU
+
 # ========== КЛАВИАТУРЫ ==========
 def get_role_selection_keyboard(user_id: int):
     """Клавиатура выбора роли"""
@@ -997,6 +1973,8 @@ def get_main_menu_keyboard(user_role: str = "user"):
              InlineKeyboardButton("🎟 Купить билет", callback_data="buy_start")],
             [InlineKeyboardButton("🎪 Событие", callback_data="event_info"),
              InlineKeyboardButton("📋 Мои заказы", callback_data="my_orders")],
+            [InlineKeyboardButton("🎫 Мои билеты", callback_data="my_tickets_cmd"),
+             InlineKeyboardButton("🔍 Сканировать", callback_data="scan_ticket_cmd")],
             [InlineKeyboardButton("⚡️ Админ-панель", callback_data="admin_menu"),
              InlineKeyboardButton("👨‍💼 Панель промоутера", callback_data="promoter_menu")]
         ]
@@ -1006,6 +1984,8 @@ def get_main_menu_keyboard(user_role: str = "user"):
              InlineKeyboardButton("🎟 Купить билет", callback_data="buy_start")],
             [InlineKeyboardButton("🎪 Событие", callback_data="event_info"),
              InlineKeyboardButton("📋 Мои заказы", callback_data="my_orders")],
+            [InlineKeyboardButton("🎫 Мои билеты", callback_data="my_tickets_cmd"),
+             InlineKeyboardButton("🔍 Сканировать", callback_data="scan_ticket_cmd")],
             [InlineKeyboardButton("👨‍💼 Панель промоутера", callback_data="promoter_menu"),
              InlineKeyboardButton("⚡️ Сменить роль", callback_data="change_role")]
         ]
@@ -1014,7 +1994,8 @@ def get_main_menu_keyboard(user_role: str = "user"):
             [InlineKeyboardButton("💰 Узнать цену", callback_data="price_info"),
              InlineKeyboardButton("🎟 Купить билет", callback_data="buy_start")],
             [InlineKeyboardButton("🎪 Событие", callback_data="event_info"),
-             InlineKeyboardButton("📋 Мои заказы", callback_data="my_orders")]
+             InlineKeyboardButton("📋 Мои заказы", callback_data="my_orders")],
+            [InlineKeyboardButton("🎫 Мои билеты", callback_data="my_tickets_cmd")]
         ]
     
     return InlineKeyboardMarkup(keyboard)
@@ -1059,6 +2040,7 @@ def get_admin_keyboard():
     """Клавиатура администратора"""
     keyboard = [
         [InlineKeyboardButton("📊 Статистика", callback_data="admin_stats")],
+        [InlineKeyboardButton("🎫 Статистика билетов", callback_data="admin_ticket_stats")],
         [InlineKeyboardButton("⚙️ Настройки", callback_data="admin_settings")],
         [InlineKeyboardButton("🎪 Редактировать 'Событие'", callback_data="edit_event_info_text")],
         [InlineKeyboardButton("🔄 Сбросить статистику", callback_data="admin_reset_stats")],
@@ -1071,6 +2053,7 @@ def get_promoter_keyboard():
     keyboard = [
         [InlineKeyboardButton("📋 Активные заявки", callback_data="promoter_active")],
         [InlineKeyboardButton("⏳ Отложенные", callback_data="promoter_deferred")],
+        [InlineKeyboardButton("🎫 Статистика билетов", callback_data="promoter_ticket_stats")],
         [InlineKeyboardButton("🔙 В главное меню", callback_data="back_to_menu")]
     ]
     return InlineKeyboardMarkup(keyboard)
@@ -1688,6 +2671,58 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             
             return MAIN_MENU
         
+        elif data == "my_tickets_cmd":
+            # Получаем последний активный заказ пользователя
+            orders = db.get_user_orders(user_id)
+            if not orders:
+                await query.edit_message_text(
+                    "❌ *У вас нет покупок*\n\n"
+                    "Купите билеты, чтобы получить QR-коды.",
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return MAIN_MENU
+            
+            # Ищем последний закрытый заказ
+            latest_order = None
+            for order in orders:
+                if order['status'] == 'closed':
+                    latest_order = order
+                    break
+            
+            if not latest_order:
+                await query.edit_message_text(
+                    "❌ *У вас нет подтвержденных покупок*\n\n"
+                    "Ваши заказы еще не обработаны промоутером.",
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return MAIN_MENU
+            
+            # Отправляем билеты
+            await send_tickets_to_user(context, user_id, latest_order)
+            
+            await query.edit_message_text(
+                "✅ *Билеты отправлены!*\n\n"
+                "Проверьте чат с ботом - мы отправили вам все QR-коды.",
+                reply_markup=get_main_menu_keyboard(context.user_data.get('user_role', 'user')),
+                parse_mode=ParseMode.MARKDOWN
+            )
+            
+            return MAIN_MENU
+        
+        elif data == "scan_ticket_cmd":
+            # Открываем режим сканирования через команду
+            context.user_data['scanning_mode'] = True
+            await query.edit_message_text(
+                "📱 *Режим сканирования QR-кодов*\n\n"
+                "Теперь вы можете:\n"
+                "1. Отправить фото QR-кода 📸\n"
+                "2. Отправить текст из QR-кода 📝\n\n"
+                "Бот распознает QR-код и покажет информацию о билете.\n\n"
+                "Используйте /cancel для выхода",
+                parse_mode=ParseMode.MARKDOWN
+            )
+            return SCAN_QR_MODE
+        
         elif data == "back_to_menu":
             role = context.user_data.get('user_role', 'user')
             await query.edit_message_text(
@@ -1862,6 +2897,11 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             order = db.get_order(order_id)
             if order:
                 await send_new_order_notification(context, order)
+                
+                # Создаем билеты после успешной покупки
+                # Билеты будут созданы при закрытии заказа промоутером
+                # Для демонстрации можно создать их сразу:
+                # tickets = await create_tickets_after_purchase(context, order)
             
             context.user_data.pop('in_buy_process', None)
             context.user_data.pop('name', None)
@@ -1938,6 +2978,37 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 )
                 return MAIN_MENU
         
+        elif data == "admin_ticket_stats":
+            if user_id in ADMIN_IDS:
+                stats = db.get_ticket_statistics()
+                
+                text = (
+                    "📊 *СТАТИСТИКА БИЛЕТОВ*\n\n"
+                    f"🎫 *Всего билетов:* {stats.get('total_tickets', 0)}\n"
+                    f"🟢 *Активных:* {stats.get('active_tickets', 0)}\n"
+                    f"✅ *Использовано:* {stats.get('used_tickets', 0)}\n\n"
+                    f"🎟 *Танцпол:*\n"
+                    f"• Всего: {stats.get('standard_tickets', 0)}\n"
+                    f"• Использовано: {stats.get('used_standard', 0)}\n\n"
+                    f"🎩 *VIP:*\n"
+                    f"• Всего: {stats.get('vip_tickets', 0)}\n"
+                    f"• Использовано: {stats.get('used_vip', 0)}"
+                )
+                
+                await query.edit_message_text(
+                    text,
+                    reply_markup=get_admin_keyboard(),
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return ADMIN_MENU
+            else:
+                await query.edit_message_text(
+                    "❌ *У вас нет прав администратора*",
+                    reply_markup=get_main_menu_keyboard(context.user_data.get('user_role', 'user')),
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return MAIN_MENU
+        
         elif data == "admin_reset_stats":
             if user_id in ADMIN_IDS:
                 await query.edit_message_text(
@@ -1965,11 +3036,12 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                     cursor = conn.cursor()
                     cursor.execute("DELETE FROM guests")
                     cursor.execute("DELETE FROM orders")
+                    cursor.execute("DELETE FROM tickets")
                     conn.commit()
                 
                 await query.edit_message_text(
                     "✅ *Вся статистика успешно сброшена!*\n\n"
-                    "Все заказы и гости удалены.",
+                    "Все заказы, гости и билеты удалены.",
                     reply_markup=get_admin_keyboard(),
                     parse_mode=ParseMode.MARKDOWN
                 )
@@ -2164,6 +3236,37 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 )
                 return MAIN_MENU
         
+        elif data == "promoter_ticket_stats":
+            if user_id in PROMOTER_IDS:
+                stats = db.get_ticket_statistics()
+                
+                text = (
+                    "📊 *СТАТИСТИКА БИЛЕТОВ*\n\n"
+                    f"🎫 *Всего билетов:* {stats.get('total_tickets', 0)}\n"
+                    f"🟢 *Активных:* {stats.get('active_tickets', 0)}\n"
+                    f"✅ *Использовано:* {stats.get('used_tickets', 0)}\n\n"
+                    f"🎟 *Танцпол:*\n"
+                    f"• Всего: {stats.get('standard_tickets', 0)}\n"
+                    f"• Использовано: {stats.get('used_standard', 0)}\n\n"
+                    f"🎩 *VIP:*\n"
+                    f"• Всего: {stats.get('vip_tickets', 0)}\n"
+                    f"• Использовано: {stats.get('used_vip', 0)}"
+                )
+                
+                await query.edit_message_text(
+                    text,
+                    reply_markup=get_promoter_keyboard(),
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return PROMOTER_MENU
+            else:
+                await query.edit_message_text(
+                    "❌ *У вас нет прав промоутера*",
+                    reply_markup=get_main_menu_keyboard(context.user_data.get('user_role', 'user')),
+                    parse_mode=ParseMode.MARKDOWN
+                )
+                return MAIN_MENU
+        
         elif data == "promoter_active":
             if user_id in PROMOTER_IDS:
                 active_orders = db.get_orders_by_status("active")
@@ -2223,7 +3326,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 if not filtered_orders:
                     await query.edit_message_text(
                         "✅ *Нет доступных отложенных заявки*\n\n"
-                        "Ваши собственные заказы не отображаются в этом списке.",
+                        "Ваши собственные заказы не отображаются в этом списках.",
                         reply_markup=get_promoter_keyboard(),
                         parse_mode=ParseMode.MARKDOWN
                     )
@@ -2349,6 +3452,13 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                     return PROMOTER_MENU
                 
                 if db.update_order_status(order_id, "closed", username):
+                    # Создаем билеты после закрытия заказа
+                    tickets = await create_tickets_after_purchase(context, order)
+                    
+                    if tickets:
+                        # Отправляем билеты пользователю
+                        await send_tickets_to_user(context, order['user_id'], order)
+                    
                     await send_channel_notification(context, order, username, "closed")
                     
                     await send_to_lists_channel(context, order, username)
@@ -2357,6 +3467,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                     
                     await query.edit_message_text(
                         f"✅ *Заказ #{order_id} успешно закрыт!*\n\n"
+                        f"Создано билетов: {len(tickets) if tickets else 0}\n\n"
                         f"Уведомления отправлены:\n"
                         f"• В канал закрытых заявок\n"
                         f"• В канал со списками\n"
@@ -2466,6 +3577,11 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 parse_mode=ParseMode.MARKDOWN
             )
             return ROLE_SELECTION
+        
+        # Обработка кнопок сканирования
+        elif data.startswith("scan_"):
+            await handle_scan_button(update, context)
+            return MAIN_MENU
         
         else:
             await query.edit_message_text(
@@ -2638,12 +3754,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
                         context.user_data.pop('editing_key', None)
                         context.user_data.pop('editing_name', None)
                         
+                        role = get_user_role(user_id)
                         await update.message.reply_text(
-                            "⚡️ *Панель администратора*",
-                            reply_markup=get_admin_keyboard(),
+                            f"🏠 *Главное меню*\n\n"
+                            f"Выберите действие:",
+                            reply_markup=get_main_menu_keyboard(role),
                             parse_mode=ParseMode.MARKDOWN
                         )
-                        return ADMIN_MENU
+                        return MAIN_MENU
                     else:
                         await update.message.reply_text(
                             f"❌ *Ошибка при обновлении текста*",
@@ -2703,26 +3821,25 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
                     context.user_data.pop('editing_key', None)
                     context.user_data.pop('editing_name', None)
                     
-                    if editing_key.startswith('price') or editing_key == 'group_threshold':
-                        await update.message.reply_text(
-                            "💰 *Редактирование цен*",
-                            reply_markup=get_price_edit_keyboard(),
-                            parse_mode=ParseMode.MARKDOWN
-                        )
-                        return ADMIN_EDIT
-                    elif editing_key.startswith('contact'):
-                        await update.message.reply_text(
-                            "📞 *Редактирование контактов*",
-                            reply_markup=get_contacts_edit_keyboard(),
-                            parse_mode=ParseMode.MARKDOWN
-                        )
-                        return ADMIN_EDIT
+                    role = get_user_role(user_id)
+                    await update.message.reply_text(
+                        f"🏠 *Главное меню*\n\n"
+                        f"Выберите действие:",
+                        reply_markup=get_main_menu_keyboard(role),
+                        parse_mode=ParseMode.MARKDOWN
+                    )
+                    return MAIN_MENU
                 else:
                     await update.message.reply_text(
                         f"❌ *Ошибка при обновлении {editing_name}*",
                         parse_mode=ParseMode.MARKDOWN
                     )
                     return ADMIN_EDIT_TEXT
+        
+        # Если мы находимся в режиме сканирования, вызываем обработчик текстовых QR-кодов
+        elif context.user_data.get('scanning_mode', False):
+            await handle_qr_text(update, context)
+            return SCAN_QR_MODE
         
         else:
             role = context.user_data.get('user_role', 'user')
@@ -2743,6 +3860,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
             parse_mode=ParseMode.MARKDOWN
         )
         
+        role = get_user_role(user_id)
         return MAIN_MENU
 
 # ========== КОМАНДА ДЛЯ ОТПРАВКИ ЛОГОВ ==========
@@ -2758,6 +3876,7 @@ async def logs_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             
             stats = db.get_statistics()
+            ticket_stats = db.get_ticket_statistics()
             
             recent_orders = []
             try:
@@ -2780,6 +3899,12 @@ async def logs_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"• Возвраты: {stats.get('refunded_orders', 0)}\n"
                 f"• Выручка: {stats.get('revenue', 0)} ₽\n"
                 f"• Всего гостей: {stats.get('total_guests', 0)}\n\n"
+                f"*🎫 СТАТИСТИКА БИЛЕТОВ:*\n"
+                f"• Всего билетов: {ticket_stats.get('total_tickets', 0)}\n"
+                f"• Активных: {ticket_stats.get('active_tickets', 0)}\n"
+                f"• Использовано: {ticket_stats.get('used_tickets', 0)}\n"
+                f"• Танцпол: {ticket_stats.get('standard_tickets', 0)}\n"
+                f"• VIP: {ticket_stats.get('vip_tickets', 0)}\n\n"
             )
             
             if recent_orders:
@@ -2834,6 +3959,7 @@ async def cancel_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     context.user_data.pop('editing_key', None)
     context.user_data.pop('editing_name', None)
     context.user_data.pop('ticket_type', None)
+    context.user_data.pop('scanning_mode', None)
     
     await update.message.reply_text(
         "❌ *Действие отменено*",
@@ -2861,21 +3987,28 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "• /start - Начать работу с ботом\n"
         "• /help - Показать это сообщение\n"
         "• /cancel - Отменить текущее действие\n"
-        "• /logs - Получить логи (только для администраторов)\n\n"
+        "• /logs - Получить логи (только для администраторов)\n"
+        "• /scan - Сканировать QR-код билета (промоутеры/админы)\n"
+        "• /check_ticket <id> - Проверить билет по ID\n"
+        "• /ticket_stats - Статистика билетов\n"
+        "• /my_tickets - Получить свои билеты\n\n"
         "*Функции для всех:*\n"
         "• Узнать цены на билеты\n"
         "• Купить билеты онлайн\n"
         "• Просмотреть информацию о мероприятии\n"
-        "• Посмотреть свои заказы\n\n"
+        "• Посмотреть свои заказы\n"
+        "• Получить QR-коды билетов\n\n"
         "*Для промоутеров:*\n"
         "• Просмотр активных заявок\n"
         "• Обработка заказов\n"
-        "• Отслеживание статистики\n\n"
+        "• Отслеживание статистики\n"
+        "• Сканирование QR-кодов\n\n"
         "*Для администраторов:*\n"
         "• Управление настройками\n"
         "• Просмотр статистики\n"
         "• Редактирование информации о мероприятии\n"
-        "• Получение логов\n\n"
+        "• Получение логов\n"
+        "• Сканирование QR-кодов\n\n"
         "*Техническая поддержка:* @smile_party"
     )
     
@@ -2975,7 +4108,8 @@ def main() -> None:
             ROLE_SELECTION: [CallbackQueryHandler(button_handler)],
             MAIN_MENU: [
                 CallbackQueryHandler(button_handler),
-                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text)
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text),
+                MessageHandler(filters.PHOTO, handle_qr_photo)
             ],
             BUY_TICKET_TYPE: [
                 CallbackQueryHandler(button_handler),
@@ -2999,7 +4133,12 @@ def main() -> None:
             ],
             PROMOTER_VIEW_ORDER: [CallbackQueryHandler(button_handler)],
             PROMOTER_DEFERRED: [CallbackQueryHandler(button_handler)],
-            ADMIN_RESET_STATS: [CallbackQueryHandler(button_handler)]
+            ADMIN_RESET_STATS: [CallbackQueryHandler(button_handler)],
+            SCAN_QR_MODE: [
+                MessageHandler(filters.TEXT & ~filters.COMMAND, handle_qr_text),
+                MessageHandler(filters.PHOTO, handle_qr_photo),
+                CallbackQueryHandler(button_handler)
+            ]
         },
         fallbacks=[
             CommandHandler("cancel", cancel_command),
@@ -3007,7 +4146,11 @@ def main() -> None:
             CommandHandler("help", help_command),
             CommandHandler("notify_all", notify_all_command),
             CommandHandler("check_orders", check_new_orders_command),
-            CommandHandler("logs", logs_command)
+            CommandHandler("logs", logs_command),
+            CommandHandler("scan", scan_command),
+            CommandHandler("check_ticket", check_ticket_command),
+            CommandHandler("ticket_stats", ticket_stats_command),
+            CommandHandler("my_tickets", my_tickets_command)
         ]
     )
     
@@ -3016,8 +4159,19 @@ def main() -> None:
     application.add_handler(CommandHandler("notify_all", notify_all_command))
     application.add_handler(CommandHandler("check_orders", check_new_orders_command))
     application.add_handler(CommandHandler("logs", logs_command))
+    application.add_handler(CommandHandler("scan", scan_command))
+    application.add_handler(CommandHandler("check_ticket", check_ticket_command))
+    application.add_handler(CommandHandler("ticket_stats", ticket_stats_command))
+    application.add_handler(CommandHandler("my_tickets", my_tickets_command))
+    
+    # Добавляем глобальный обработчик для фото (вне conversation handler)
+    application.add_handler(MessageHandler(filters.PHOTO, handle_qr_photo))
     
     logger.info("✅ Бот запущен и готов к работе!")
+    
+    # Информируем о необходимости установки библиотек для распознавания QR
+    logger.info("🔧 Для распознавания QR-кодов с фото установите: pip install pyzbar pillow opencv-python")
+    logger.info("🔧 Или отправляйте текст из QR-кодов, если библиотеки не установлены")
     
     import threading
     import time
